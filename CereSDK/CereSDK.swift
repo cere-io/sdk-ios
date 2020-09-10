@@ -9,6 +9,7 @@
 import Foundation
 
 public class CereSDK {
+    public init() {}
     public func initSDK() -> String {
         return "Hello from SDK"
     }
