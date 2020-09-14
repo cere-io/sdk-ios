@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BridgeHTML</title>
+  </head>
+  <body>
+    <div id="placement"></div>
+    <script src="https://s3-us-west-2.amazonaws.com/sdk-dev.cere.io/v1.0.0/cereSDK.dev.js" defer></script>
+    <script>
+      window.onload = async () => {
+        initBridge();
+
+        // temp stub
+        const user = {
+          publicKey: 'GC6L26U6AQTUQLHOW2Q7SO2GCPNGHSM5QUF4KV6BCUUHMLBRQ5URVKLH',
+          secret: 'SA7MJZZEOK7D2VWGOH42CZM3UK5UIHXX4VKOXY2LHE3F3PXYAIDJVGYP',
+        };
+        localStorage.setItem('userID', JSON.stringify(user));
+
+        // read params
+        const urlParams = new URLSearchParams(window.location.search);
+        const appId = urlParams.get('appId');
+        const integrationPartnerUserId = urlParams.get('integrationPartnerUserId');
+        const iosSdkVersion = urlParams.get('iosSdkVersion');
+        const env = urlParams.get('env');
+
+        // init SDK
+        await cereSDK.init('242', 'userID');
+        cereBridge.postMessage('SDKInitialized');
+
+        cereSDK.onEngagement(engagementHtml => {
+          const iframeEl = document.createElement('iframe');
+          iframeEl.style.border = '0';
+          iframeEl.style.width = '100%';
+          iframeEl.style.height = '100%';
+          document.getElementById('placement').appendChild(iframeEl);
+          iframeEl.contentWindow.document.open();
+          iframeEl.contentWindow.document.write(engagementHtml);
+          iframeEl.contentWindow.document.close();
+        });
+      };
+
+      function initBridge() {
+        window.cereBridge = {
+          postMessage: (action, payload) => {
+            window.webkit.messageHandlers[action].postMessage(payload || null);
+          },
+          onMessage: (action, data) => {
+            switch (action) {
+              case 'sendEvent':
+                cereSDK.sendEvent(data);
+                break;
+              default:
+                break;
+            }
+          },
+        };
+      }
+    </script>
+  </body>
+</html>

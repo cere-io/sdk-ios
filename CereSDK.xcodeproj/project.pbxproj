@@ -11,6 +11,12 @@
 		4F029F2D2509652900D83B70 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4F029F2C2509652900D83B70 /* .gitignore */; };
 		4F85F2C0250962D500797506 /* CereSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F85F2BE250962D500797506 /* CereSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4F85F2C7250962EB00797506 /* CereSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F85F2C6250962EB00797506 /* CereSDK.swift */; };
+		4F9F783B250F8FDB00DFBF64 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9F783A250F8FDB00DFBF64 /* Environment.swift */; };
+		4F9F783D250F93F400DFBF64 /* CereSDKScriptMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9F783C250F93F400DFBF64 /* CereSDKScriptMessageHandler.swift */; };
+		4F9F783F250F9B6B00DFBF64 /* HandlerTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9F783E250F9B6B00DFBF64 /* HandlerTypes.swift */; };
+		4F9F7841250FA31200DFBF64 /* CereSDKHooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9F7840250FA31200DFBF64 /* CereSDKHooks.swift */; };
+		4F9F7843250FA5A800DFBF64 /* CereSDKJsBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9F7842250FA5A800DFBF64 /* CereSDKJsBridge.swift */; };
+		4F9F7845250FB26D00DFBF64 /* native.html in Resources */ = {isa = PBXBuildFile; fileRef = 4F9F7844250FB26D00DFBF64 /* native.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +26,12 @@
 		4F85F2BE250962D500797506 /* CereSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CereSDK.h; sourceTree = "<group>"; };
 		4F85F2BF250962D500797506 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F85F2C6250962EB00797506 /* CereSDK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CereSDK.swift; sourceTree = "<group>"; };
+		4F9F783A250F8FDB00DFBF64 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		4F9F783C250F93F400DFBF64 /* CereSDKScriptMessageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CereSDKScriptMessageHandler.swift; sourceTree = "<group>"; };
+		4F9F783E250F9B6B00DFBF64 /* HandlerTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandlerTypes.swift; sourceTree = "<group>"; };
+		4F9F7840250FA31200DFBF64 /* CereSDKHooks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CereSDKHooks.swift; sourceTree = "<group>"; };
+		4F9F7842250FA5A800DFBF64 /* CereSDKJsBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CereSDKJsBridge.swift; sourceTree = "<group>"; };
+		4F9F7844250FB26D00DFBF64 /* native.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = native.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +48,7 @@
 		4F85F2B1250962D500797506 = {
 			isa = PBXGroup;
 			children = (
+				4F9F7844250FB26D00DFBF64 /* native.html */,
 				4F029F2C2509652900D83B70 /* .gitignore */,
 				4F029F2A250964B700D83B70 /* CereSDK.podspec */,
 				4F85F2BD250962D500797506 /* CereSDK */,
@@ -54,11 +67,24 @@
 		4F85F2BD250962D500797506 /* CereSDK */ = {
 			isa = PBXGroup;
 			children = (
+				4F9F7830250B815E00DFBF64 /* Extensions */,
 				4F85F2BE250962D500797506 /* CereSDK.h */,
 				4F85F2BF250962D500797506 /* Info.plist */,
 				4F85F2C6250962EB00797506 /* CereSDK.swift */,
+				4F9F783A250F8FDB00DFBF64 /* Environment.swift */,
+				4F9F783E250F9B6B00DFBF64 /* HandlerTypes.swift */,
 			);
 			path = CereSDK;
+			sourceTree = "<group>";
+		};
+		4F9F7830250B815E00DFBF64 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4F9F783C250F93F400DFBF64 /* CereSDKScriptMessageHandler.swift */,
+				4F9F7840250FA31200DFBF64 /* CereSDKHooks.swift */,
+				4F9F7842250FA5A800DFBF64 /* CereSDKJsBridge.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,6 +159,7 @@
 			files = (
 				4F029F2D2509652900D83B70 /* .gitignore in Resources */,
 				4F029F2B250964B700D83B70 /* CereSDK.podspec in Resources */,
+				4F9F7845250FB26D00DFBF64 /* native.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,6 +171,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F85F2C7250962EB00797506 /* CereSDK.swift in Sources */,
+				4F9F783B250F8FDB00DFBF64 /* Environment.swift in Sources */,
+				4F9F783F250F9B6B00DFBF64 /* HandlerTypes.swift in Sources */,
+				4F9F7841250FA31200DFBF64 /* CereSDKHooks.swift in Sources */,
+				4F9F783D250F93F400DFBF64 /* CereSDKScriptMessageHandler.swift in Sources */,
+				4F9F7843250FA5A800DFBF64 /* CereSDKJsBridge.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
