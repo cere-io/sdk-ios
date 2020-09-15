@@ -11,25 +11,25 @@ import Foundation
 /// Struct to set the widget running environment. It contains settings to work in specified environments.
 public struct Environment {
     /// Configuration property for Local environment.
-    public static let LOCAL: Environment = Environment("local", "http://localhost:8080");
+    internal static let LOCAL: Environment = Environment("local", "http://localhost:8080");
     
-    /// Configuration property for Dev1 environment.
-    static let DEV: Environment = Environment("dev", "TODO");
+    /// Configuration property for Dev environment.
+    internal static let DEV: Environment = Environment("dev", "TODO");
     
     /// Configuration property for Stage environment.
-    public static let STAGE: Environment = Environment("stage", "TODO");
+    internal static let STAGE: Environment = Environment("stage", "TODO");
     
     /// Configuration property for Production environment.
-    public static let PRODUCTION: Environment = Environment("production", "TODO");
+    internal static let PRODUCTION: Environment = Environment("production", "https://s3-us-west-2.amazonaws.com/sdk-common.cere.io/native.html");
     
     /// Name of environment.
-    public let name: String;
+    internal let name: String;
     
-    /// Url to widget-ui server.
-    public let widgetURL: String;
+    /// Url to native html.
+    internal let nativeHtmlUrl: String;
     
-    init(_ name: String, _ widgetURL: String) {
+    init(_ name: String, _ nativeHtmlUrl: String) {
         self.name = name;
-        self.widgetURL = widgetURL;
+        self.nativeHtmlUrl = nativeHtmlUrl;
     }
 }

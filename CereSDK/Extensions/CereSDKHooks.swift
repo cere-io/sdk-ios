@@ -10,6 +10,7 @@ import Foundation
 
 extension CereSDK {
     
+    /// Sets handler that is called when widget is finished initialization.
     public func onInitializationFinished(_ handler: @escaping OnInitializationFinishedHandler) -> CereSDK {
         self.onInitializationFinishedHandler = handler
         return self

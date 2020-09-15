@@ -10,6 +10,8 @@ import Foundation
 
 internal enum SdkScriptHandlers : String {
     case SDK_INITIALIZED = "SDKInitialized"
+    case ENGAGEMENT_RECEIVED = "EngagementReceived"
 }
 
+/// Type for OnInitializationFinishedHandler event handler.
 public typealias OnInitializationFinishedHandler = () -> Void
