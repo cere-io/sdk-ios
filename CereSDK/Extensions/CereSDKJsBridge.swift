@@ -15,7 +15,7 @@ extension CereSDK {
     
     internal func postMessage(action: String, data: String = "") {
         let js = "window.cereBridge.onMessage('\(action)', '\(data)')"
-        self.webView?.evaluateJavaScript(js) {(result, error) in
+        self.webView.evaluateJavaScript(js) {(result, error) in
             if error != nil {
                 // TODO add to some queue to re-run
             }

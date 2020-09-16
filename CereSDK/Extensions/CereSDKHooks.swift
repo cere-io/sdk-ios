@@ -16,4 +16,10 @@ extension CereSDK {
         return self
     }
     
+    /// Sets handler that is called when widget is failed to initialize.
+    public func onInitializationError(_ handler: @escaping OnInitializationErrorHandler) -> CereSDK {
+        self.onInitializationErrorHandler = handler
+        return self
+    }
+    
 }

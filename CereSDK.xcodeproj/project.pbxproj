@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4F029F2B250964B700D83B70 /* CereSDK.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 4F029F2A250964B700D83B70 /* CereSDK.podspec */; };
 		4F029F2D2509652900D83B70 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4F029F2C2509652900D83B70 /* .gitignore */; };
+		4F4BB5E5251242C8000088B7 /* CereSDKStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4BB5E4251242C8000088B7 /* CereSDKStatus.swift */; };
 		4F85F2C0250962D500797506 /* CereSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F85F2BE250962D500797506 /* CereSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4F85F2C7250962EB00797506 /* CereSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F85F2C6250962EB00797506 /* CereSDK.swift */; };
 		4F9F783B250F8FDB00DFBF64 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9F783A250F8FDB00DFBF64 /* Environment.swift */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		4F029F2A250964B700D83B70 /* CereSDK.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CereSDK.podspec; sourceTree = "<group>"; };
 		4F029F2C2509652900D83B70 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		4F4BB5E4251242C8000088B7 /* CereSDKStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CereSDKStatus.swift; sourceTree = "<group>"; };
 		4F85F2BB250962D500797506 /* CereSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CereSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F85F2BE250962D500797506 /* CereSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CereSDK.h; sourceTree = "<group>"; };
 		4F85F2BF250962D500797506 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				4F85F2C6250962EB00797506 /* CereSDK.swift */,
 				4F9F783A250F8FDB00DFBF64 /* Environment.swift */,
 				4F9F783E250F9B6B00DFBF64 /* HandlerTypes.swift */,
+				4F4BB5E4251242C8000088B7 /* CereSDKStatus.swift */,
 			);
 			path = CereSDK;
 			sourceTree = "<group>";
@@ -172,6 +175,7 @@
 				4F85F2C7250962EB00797506 /* CereSDK.swift in Sources */,
 				4F9F783B250F8FDB00DFBF64 /* Environment.swift in Sources */,
 				4F9F783F250F9B6B00DFBF64 /* HandlerTypes.swift in Sources */,
+				4F4BB5E5251242C8000088B7 /* CereSDKStatus.swift in Sources */,
 				4F9F7841250FA31200DFBF64 /* CereSDKHooks.swift in Sources */,
 				4F9F783D250F93F400DFBF64 /* CereSDKScriptMessageHandler.swift in Sources */,
 				4F9F7843250FA5A800DFBF64 /* CereSDKJsBridge.swift in Sources */,
