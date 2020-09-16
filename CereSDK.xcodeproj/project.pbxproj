@@ -24,6 +24,7 @@
 		4F029F2A250964B700D83B70 /* CereSDK.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CereSDK.podspec; sourceTree = "<group>"; };
 		4F029F2C2509652900D83B70 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		4F4BB5E4251242C8000088B7 /* CereSDKStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CereSDKStatus.swift; sourceTree = "<group>"; };
+		4F4BB5E6251253AF000088B7 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4F85F2BB250962D500797506 /* CereSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CereSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F85F2BE250962D500797506 /* CereSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CereSDK.h; sourceTree = "<group>"; };
 		4F85F2BF250962D500797506 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -50,6 +51,7 @@
 		4F85F2B1250962D500797506 = {
 			isa = PBXGroup;
 			children = (
+				4F4BB5E6251253AF000088B7 /* README.md */,
 				4F029F2C2509652900D83B70 /* .gitignore */,
 				4F029F2A250964B700D83B70 /* CereSDK.podspec */,
 				4F85F2BD250962D500797506 /* CereSDK */,
