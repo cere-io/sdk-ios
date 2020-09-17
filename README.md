@@ -17,7 +17,7 @@ then run the following command to install new pod:
 pod install
 ```
 
-# Initialisation
+# Initialization
 
 Import cereSDK inside your View, get the SDK instance and call init passing appId, integrationPartnerUserId and your View
 
