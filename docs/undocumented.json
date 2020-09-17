@@ -1,0 +1,40 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/pavel_viarkhouski/Cere/cere-io/sdk-ios/CereSDK/CereSDK/CereSDKStatus.swift",
+      "line": 13,
+      "symbol": "SdkStatus.NOT_INITIALIZED",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pavel_viarkhouski/Cere/cere-io/sdk-ios/CereSDK/CereSDK/CereSDKStatus.swift",
+      "line": 14,
+      "symbol": "SdkStatus.INITIALIZING",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pavel_viarkhouski/Cere/cere-io/sdk-ios/CereSDK/CereSDK/CereSDKStatus.swift",
+      "line": 15,
+      "symbol": "SdkStatus.INITIALIZED",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pavel_viarkhouski/Cere/cere-io/sdk-ios/CereSDK/CereSDK/CereSDKStatus.swift",
+      "line": 16,
+      "symbol": "SdkStatus.INITIALIZE_ERROR",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/pavel_viarkhouski/Cere/cere-io/sdk-ios/CereSDK/CereSDK/HandlerTypes.swift",
+      "line": 19,
+      "symbol": "OnInitializationErrorHandler",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/pavel_viarkhouski/Cere/cere-io/sdk-ios/CereSDK"
+}

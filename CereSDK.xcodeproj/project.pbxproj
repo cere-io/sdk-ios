@@ -9,17 +9,40 @@
 /* Begin PBXBuildFile section */
 		4F029F2B250964B700D83B70 /* CereSDK.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 4F029F2A250964B700D83B70 /* CereSDK.podspec */; };
 		4F029F2D2509652900D83B70 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4F029F2C2509652900D83B70 /* .gitignore */; };
+		4F4BB5E5251242C8000088B7 /* CereSDKStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4BB5E4251242C8000088B7 /* CereSDKStatus.swift */; };
+		4F4BB5E925134FF6000088B7 /* Podfile.lock in Resources */ = {isa = PBXBuildFile; fileRef = 4F4BB5E725134FF6000088B7 /* Podfile.lock */; };
+		4F4BB5EA25134FF6000088B7 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 4F4BB5E825134FF6000088B7 /* Podfile */; };
 		4F85F2C0250962D500797506 /* CereSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F85F2BE250962D500797506 /* CereSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4F85F2C7250962EB00797506 /* CereSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F85F2C6250962EB00797506 /* CereSDK.swift */; };
+		4F9F783B250F8FDB00DFBF64 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9F783A250F8FDB00DFBF64 /* Environment.swift */; };
+		4F9F783D250F93F400DFBF64 /* CereSDKScriptMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9F783C250F93F400DFBF64 /* CereSDKScriptMessageHandler.swift */; };
+		4F9F783F250F9B6B00DFBF64 /* HandlerTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9F783E250F9B6B00DFBF64 /* HandlerTypes.swift */; };
+		4F9F7841250FA31200DFBF64 /* CereSDKHooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9F7840250FA31200DFBF64 /* CereSDKHooks.swift */; };
+		4F9F7843250FA5A800DFBF64 /* CereSDKJsBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9F7842250FA5A800DFBF64 /* CereSDKJsBridge.swift */; };
+		4F9F78472510F6A900DFBF64 /* CereSDKView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9F78462510F6A900DFBF64 /* CereSDKView.swift */; };
+		C00726D2849F8F08BF6C3BB9 /* Pods_CereSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5F4A307894F56CA59CBC235 /* Pods_CereSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4F029F2A250964B700D83B70 /* CereSDK.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CereSDK.podspec; sourceTree = "<group>"; };
+		4F029F2A250964B700D83B70 /* CereSDK.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CereSDK.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		4F029F2C2509652900D83B70 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		4F4BB5E4251242C8000088B7 /* CereSDKStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CereSDKStatus.swift; sourceTree = "<group>"; };
+		4F4BB5E6251253AF000088B7 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		4F4BB5E725134FF6000088B7 /* Podfile.lock */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile.lock; sourceTree = "<group>"; };
+		4F4BB5E825134FF6000088B7 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		4F85F2BB250962D500797506 /* CereSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CereSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F85F2BE250962D500797506 /* CereSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CereSDK.h; sourceTree = "<group>"; };
 		4F85F2BF250962D500797506 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F85F2C6250962EB00797506 /* CereSDK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CereSDK.swift; sourceTree = "<group>"; };
+		4F9F783A250F8FDB00DFBF64 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		4F9F783C250F93F400DFBF64 /* CereSDKScriptMessageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CereSDKScriptMessageHandler.swift; sourceTree = "<group>"; };
+		4F9F783E250F9B6B00DFBF64 /* HandlerTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandlerTypes.swift; sourceTree = "<group>"; };
+		4F9F7840250FA31200DFBF64 /* CereSDKHooks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CereSDKHooks.swift; sourceTree = "<group>"; };
+		4F9F7842250FA5A800DFBF64 /* CereSDKJsBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CereSDKJsBridge.swift; sourceTree = "<group>"; };
+		4F9F78462510F6A900DFBF64 /* CereSDKView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CereSDKView.swift; sourceTree = "<group>"; };
+		7F85D30EEEC47234DCC67EED /* Pods-CereSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CereSDK.release.xcconfig"; path = "Target Support Files/Pods-CereSDK/Pods-CereSDK.release.xcconfig"; sourceTree = "<group>"; };
+		B5F4A307894F56CA59CBC235 /* Pods_CereSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CereSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2EBD037FB3CDBD1D0DD9423 /* Pods-CereSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CereSDK.debug.xcconfig"; path = "Target Support Files/Pods-CereSDK/Pods-CereSDK.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C00726D2849F8F08BF6C3BB9 /* Pods_CereSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -36,10 +60,15 @@
 		4F85F2B1250962D500797506 = {
 			isa = PBXGroup;
 			children = (
+				4F4BB5E825134FF6000088B7 /* Podfile */,
+				4F4BB5E725134FF6000088B7 /* Podfile.lock */,
+				4F4BB5E6251253AF000088B7 /* README.md */,
 				4F029F2C2509652900D83B70 /* .gitignore */,
 				4F029F2A250964B700D83B70 /* CereSDK.podspec */,
 				4F85F2BD250962D500797506 /* CereSDK */,
 				4F85F2BC250962D500797506 /* Products */,
+				B8D3D7B3539DE687298D42CA /* Pods */,
+				7ADB2423E71BA1C1450AB7D7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,11 +83,43 @@
 		4F85F2BD250962D500797506 /* CereSDK */ = {
 			isa = PBXGroup;
 			children = (
+				4F9F7830250B815E00DFBF64 /* Extensions */,
 				4F85F2BE250962D500797506 /* CereSDK.h */,
 				4F85F2BF250962D500797506 /* Info.plist */,
 				4F85F2C6250962EB00797506 /* CereSDK.swift */,
+				4F9F783A250F8FDB00DFBF64 /* Environment.swift */,
+				4F9F783E250F9B6B00DFBF64 /* HandlerTypes.swift */,
+				4F4BB5E4251242C8000088B7 /* CereSDKStatus.swift */,
 			);
 			path = CereSDK;
+			sourceTree = "<group>";
+		};
+		4F9F7830250B815E00DFBF64 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4F9F783C250F93F400DFBF64 /* CereSDKScriptMessageHandler.swift */,
+				4F9F7840250FA31200DFBF64 /* CereSDKHooks.swift */,
+				4F9F7842250FA5A800DFBF64 /* CereSDKJsBridge.swift */,
+				4F9F78462510F6A900DFBF64 /* CereSDKView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		7ADB2423E71BA1C1450AB7D7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B5F4A307894F56CA59CBC235 /* Pods_CereSDK.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B8D3D7B3539DE687298D42CA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D2EBD037FB3CDBD1D0DD9423 /* Pods-CereSDK.debug.xcconfig */,
+				7F85D30EEEC47234DCC67EED /* Pods-CereSDK.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -79,6 +140,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4F85F2C3250962D500797506 /* Build configuration list for PBXNativeTarget "CereSDK" */;
 			buildPhases = (
+				04ECD5E3DE0B6FCEE2F0493A /* [CP] Check Pods Manifest.lock */,
 				4F85F2B6250962D500797506 /* Headers */,
 				4F85F2B7250962D500797506 /* Sources */,
 				4F85F2B8250962D500797506 /* Frameworks */,
@@ -131,12 +193,39 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F4BB5E925134FF6000088B7 /* Podfile.lock in Resources */,
 				4F029F2D2509652900D83B70 /* .gitignore in Resources */,
+				4F4BB5EA25134FF6000088B7 /* Podfile in Resources */,
 				4F029F2B250964B700D83B70 /* CereSDK.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		04ECD5E3DE0B6FCEE2F0493A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CereSDK-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4F85F2B7250962D500797506 /* Sources */ = {
@@ -144,6 +233,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F85F2C7250962EB00797506 /* CereSDK.swift in Sources */,
+				4F9F783B250F8FDB00DFBF64 /* Environment.swift in Sources */,
+				4F9F783F250F9B6B00DFBF64 /* HandlerTypes.swift in Sources */,
+				4F4BB5E5251242C8000088B7 /* CereSDKStatus.swift in Sources */,
+				4F9F7841250FA31200DFBF64 /* CereSDKHooks.swift in Sources */,
+				4F9F783D250F93F400DFBF64 /* CereSDKScriptMessageHandler.swift in Sources */,
+				4F9F7843250FA5A800DFBF64 /* CereSDKJsBridge.swift in Sources */,
+				4F9F78472510F6A900DFBF64 /* CereSDKView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +368,7 @@
 		};
 		4F85F2C4250962D500797506 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2EBD037FB3CDBD1D0DD9423 /* Pods-CereSDK.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -297,6 +394,7 @@
 		};
 		4F85F2C5250962D500797506 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F85D30EEEC47234DCC67EED /* Pods-CereSDK.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
