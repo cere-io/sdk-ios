@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import WebKit
+import SwiftyJSON
 
 /// Class that provides all the functionality of the Cere SDK.
 ///
@@ -58,7 +59,8 @@ public class CereSDK: NSObject, WKNavigationDelegate {
     /// - Parameter eventType: Type of event. For example `APP_LAUNCHED`.
     /// - Parameter payload: Optional parameter which can be passed with event.
     public func sendEvent(eventType: String, payload: String = "") {
-        self.postMessage(action: JSBridgeActions.SEND_EVENT.rawValue, data: eventType)
+        let json: JSON = JSON(["eventType": eventType, "payload": payload])
+        self.postMessage(action: JSBridgeActions.SEND_EVENT.rawValue, data: json)
     }
     
     /// Sets custom size for the widget. Parameters should be specified in percentage of screen bounds.

@@ -17,5 +17,7 @@ Pod::Spec.new do |spec|
 
   spec.source_files  = "CereSDK/**/*.swift"
   spec.swift_version = "5"
+  
+  spec.dependency "SwiftyJSON", "4.3.0"
 
 end
