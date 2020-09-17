@@ -31,4 +31,4 @@ sdk.initSDK(appId: "appID", integrationPartnerUserId: "userID", controller: self
 
 # API
 
-Link to generated docs (TODO)
+Link to generated docs - [https://cere-io.github.io/sdk-ios/](https://cere-io.github.io/sdk-ios/)
