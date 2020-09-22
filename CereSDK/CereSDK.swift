@@ -20,6 +20,7 @@ public class CereSDK: NSObject, WKNavigationDelegate {
     private var appId: String = ""
     private var integrationPartnerUserId: String = ""
     private var version: String = "unknown"
+    private var token: String = ""
     private var env: Environment = Environment.PRODUCTION
     
     internal var webView: WKWebView
@@ -43,12 +44,14 @@ public class CereSDK: NSObject, WKNavigationDelegate {
     /// - Parameter appId: identifier of the application from RXB.
     /// - Parameter integrationPartnerUserId: The user’s id in the system.
     /// - Parameter controller: UIViewController where SDK's WebView will be attached to
-    public func initSDK(appId: String, integrationPartnerUserId: String, controller: UIViewController) {
+    /// - Parameter token: (Optional) User onboarding access token
+    public func initSDK(appId: String, integrationPartnerUserId: String, controller: UIViewController, token: String = "") {
         self.sdkInitStatus = SdkStatus.INITIALIZING
         determineCurrentVersion()
         
         self.appId = appId
         self.integrationPartnerUserId = integrationPartnerUserId
+        self.token = token
         
         self.initWebView(controller: controller)
         self.addScriptHandlers()
@@ -87,7 +90,7 @@ public class CereSDK: NSObject, WKNavigationDelegate {
     }
     
     private func loadContent() {
-        let url = URL(string: "\(self.env.nativeHtmlUrl)?appId=\(self.appId)&integrationPartnerUserId=\(self.integrationPartnerUserId)&platform=ios&version=\(self.version)&env=\(self.env.name)")
+        let url = URL(string: "\(self.env.nativeHtmlUrl)?appId=\(self.appId)&integrationPartnerUserId=\(self.integrationPartnerUserId)&platform=ios&version=\(self.version)&env=\(self.env.name)&token=\(self.token)")
         self.webView.load(URLRequest(url: url!))
     }
     
