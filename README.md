@@ -1,3 +1,11 @@
+## Release notes
+### vNext
+*
+### v1.1.0
+* Add optional onboarding token parameter to init method
+### v1.0.0
+* First release
+
 # Setup
 
 Minimal supported ios version is 9.0.
