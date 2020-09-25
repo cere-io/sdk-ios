@@ -1,6 +1,8 @@
 ## Release notes
 ### vNext
 *
+### v1.1.1
+* Update documentation
 ### v1.1.0
 * Add optional onboarding token parameter to init method
 ### v1.0.0
@@ -17,7 +19,7 @@ The easiest way to integrate widget to iOS application is to use CocoaPods. In y
 
 ```
 source 'https://github.com/cere-io/sdk-ios.git'
-pod 'CereSDK', '~> 1.0.0'
+pod 'CereSDK', '~> 1.1.1'
 ```
 then run the following command to install new pod:
 
