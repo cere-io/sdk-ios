@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "CereSDK"
-  spec.version      = "1.1.0"
+  spec.version      = "1.1.1"
   spec.summary      = "CereSDK for iOS"
   spec.description  = "The library is CereSDK wrapper for iOS"
 
@@ -17,7 +17,7 @@ Pod::Spec.new do |spec|
 
   spec.source_files  = "CereSDK/**/*.swift"
   spec.swift_version = "5"
-  
+
   spec.dependency "SwiftyJSON", "4.3.0"
 
 end
