@@ -1,6 +1,8 @@
 ## Release notes
 ### vNext
-*
+* 
+### v1.1.2
+* Updated the documentation
 ### v1.1.1
 * Update documentation
 ### v1.1.0
