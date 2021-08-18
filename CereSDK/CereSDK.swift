@@ -86,6 +86,7 @@ public class CereSDK: NSObject, WKNavigationDelegate {
     
     private func initWebView(controller: UIViewController) {
         self.webView.navigationDelegate = self
+        updateWebViewSize()
         controller.view.addSubview(self.webView)
     }
     
