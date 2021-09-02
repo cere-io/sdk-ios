@@ -12,7 +12,13 @@ import UIKit
 extension CereSDK {
     
     internal func updateWebViewSize() {
-        let s = UIScreen.main.bounds
+        var s = UIScreen.main.bounds
+        if #available(iOS 11.0, *) {
+            guard let safeAreaFrame = UIApplication.shared.keyWindow?.safeAreaLayoutGuide.layoutFrame else {
+                return
+            }
+            s = safeAreaFrame
+        }
         
         let frame = CGRect(
             x: s.minX + s.width * self.leftPercentage / 100,

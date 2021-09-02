@@ -22,6 +22,15 @@ extension CereSDK: WKScriptMessageHandler {
         case SdkScriptHandlers.SDK_INITIALIZED_ERROR.rawValue:
             self.sdkInitStatus = SdkStatus.INITIALIZE_ERROR
             self.onInitializationErrorHandler?(message.body as! String)
+        case SdkScriptHandlers.EVENT_RECEIVED.rawValue:
+            guard let data = (message.body as! String).data(using: .utf8),
+                  let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                  let event = json["event"] as? String,
+                  let payloadData = try? JSONSerialization.data(withJSONObject: json["payload"] as Any, options: []),
+                  let payload = String(data: payloadData, encoding: .utf8) else {
+                return
+            }
+            self.onEventReceivedHandler?(event, payload)
         default:
             return
         }
@@ -31,6 +40,7 @@ extension CereSDK: WKScriptMessageHandler {
         self.webView.configuration.userContentController.add(self, name: SdkScriptHandlers.SDK_INITIALIZED.rawValue)
         self.webView.configuration.userContentController.add(self, name: SdkScriptHandlers.ENGAGEMENT_RECEIVED.rawValue)
         self.webView.configuration.userContentController.add(self, name: SdkScriptHandlers.SDK_INITIALIZED_ERROR.rawValue)
+        self.webView.configuration.userContentController.add(self, name: SdkScriptHandlers.EVENT_RECEIVED.rawValue)
     }
     
 }
