@@ -27,6 +27,7 @@ public class CereSDK: NSObject, WKNavigationDelegate {
     
     internal var onInitializationFinishedHandler: OnInitializationFinishedHandler?
     internal var onInitializationErrorHandler: OnInitializationErrorHandler?
+    internal var onEventReceivedHandler: OnEventReceivedHandler?
         
     internal var leftPercentage: CGFloat = 0
     internal var topPercentage: CGFloat = 0
