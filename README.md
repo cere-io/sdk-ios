@@ -1,6 +1,9 @@
 ## Release notes
 ### vNext
 * 
+### v1.2.0
+* Added communication event
+* Changed path to `native.html`
 ### v1.1.2
 * Updated the documentation
 ### v1.1.1
@@ -20,7 +23,7 @@ spec.platform     = :ios, "9.0"
 The easiest way to integrate widget to iOS application is to use CocoaPods. In your Podfile add the following config:
 
 ```
-pod 'CereSDK', :git => 'https://github.com/cere-io/sdk-ios.git', :tag => '1.1.1'
+pod 'CereSDK', :git => 'https://github.com/cere-io/sdk-ios.git', :tag => '1.1.2'
 ```
 then run the following command to install new pod:
 
