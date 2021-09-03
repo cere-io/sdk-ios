@@ -1,6 +1,9 @@
 ## Release notes
 ### vNext
 * 
+### v1.2.0
+* Added communication event
+* Changed path to `native.html`
 ### v1.1.2
 * Updated the documentation
 ### v1.1.1
