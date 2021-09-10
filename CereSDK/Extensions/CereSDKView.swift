@@ -26,11 +26,11 @@ extension CereSDK {
             width: s.width * self.widthPercentage / 100,
             height: s.height * self.heightPercentage / 100)
         
-        self.webView.frame = frame
+        self.webView?.frame = frame
     }
     
     internal func hideWebView() {
-        self.webView.frame = .zero
+        self.webView?.frame = .zero
     }
     
 }
