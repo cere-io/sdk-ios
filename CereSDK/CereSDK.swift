@@ -23,7 +23,7 @@ public class CereSDK: NSObject, WKNavigationDelegate {
     private var token: String = ""
     private var env: Environment = Environment.PRODUCTION
     
-    internal var webView: WKWebView
+    internal var webView: WKWebView?
     
     internal var onInitializationFinishedHandler: OnInitializationFinishedHandler?
     internal var onInitializationErrorHandler: OnInitializationErrorHandler?
@@ -37,7 +37,6 @@ public class CereSDK: NSObject, WKNavigationDelegate {
     internal var sdkInitStatus: SdkStatus = SdkStatus.NOT_INITIALIZED
     
     private override init() {
-        self.webView = WKWebView(frame: .zero, configuration: WKWebViewConfiguration())
         super.init()
     }
     
@@ -80,20 +79,29 @@ public class CereSDK: NSObject, WKNavigationDelegate {
         self.hideWebView()
     }
     
+    /// Destroy SDK view
+    public func destroy() {
+        self.webView?.stopLoading()
+        self.webView?.removeFromSuperview()
+        self.webView = nil
+        self.sdkInitStatus = SdkStatus.NOT_INITIALIZED
+    }
+    
     /// Returns current SDK status
     public func getStatus() -> SdkStatus {
         return self.sdkInitStatus
     }
     
     private func initWebView(controller: UIViewController) {
-        self.webView.navigationDelegate = self
+        self.webView = WKWebView(frame: .zero, configuration: WKWebViewConfiguration())
+        self.webView?.navigationDelegate = self
         updateWebViewSize()
-        controller.view.addSubview(self.webView)
+        controller.view.addSubview(self.webView!)
     }
     
     private func loadContent() {
         let url = URL(string: "\(self.env.nativeHtmlUrl)?appId=\(self.appId)&integrationPartnerUserId=\(self.integrationPartnerUserId)&platform=ios&version=\(self.version)&env=\(self.env.name)&token=\(self.token)")
-        self.webView.load(URLRequest(url: url!))
+        self.webView?.load(URLRequest(url: url!))
     }
     
     private func determineCurrentVersion() {

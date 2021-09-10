@@ -37,10 +37,9 @@ extension CereSDK: WKScriptMessageHandler {
     }
     
     internal func addScriptHandlers() {
-        self.webView.configuration.userContentController.add(self, name: SdkScriptHandlers.SDK_INITIALIZED.rawValue)
-        self.webView.configuration.userContentController.add(self, name: SdkScriptHandlers.ENGAGEMENT_RECEIVED.rawValue)
-        self.webView.configuration.userContentController.add(self, name: SdkScriptHandlers.SDK_INITIALIZED_ERROR.rawValue)
-        self.webView.configuration.userContentController.add(self, name: SdkScriptHandlers.EVENT_RECEIVED.rawValue)
+        self.webView?.configuration.userContentController.add(self, name: SdkScriptHandlers.SDK_INITIALIZED.rawValue)
+        self.webView?.configuration.userContentController.add(self, name: SdkScriptHandlers.ENGAGEMENT_RECEIVED.rawValue)
+        self.webView?.configuration.userContentController.add(self, name: SdkScriptHandlers.SDK_INITIALIZED_ERROR.rawValue)
+        self.webView?.configuration.userContentController.add(self, name: SdkScriptHandlers.EVENT_RECEIVED.rawValue)
     }
-    
 }
