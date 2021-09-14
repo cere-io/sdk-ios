@@ -95,6 +95,7 @@ public class CereSDK: NSObject, WKNavigationDelegate {
     private func initWebView(controller: UIViewController) {
         self.webView = WKWebView(frame: .zero, configuration: WKWebViewConfiguration())
         self.webView?.navigationDelegate = self
+        self.webView?.scrollView.bounces = false
         updateWebViewSize()
         controller.view.addSubview(self.webView!)
     }
