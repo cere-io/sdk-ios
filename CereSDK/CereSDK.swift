@@ -83,20 +83,20 @@ public class CereSDK: NSObject, WKNavigationDelegate {
         self.appId = appId
         self.integrationPartnerUserId = integrationPartnerUserId
         
-        self.initWebView(controller: controller)
-        self.addScriptHandlers()
-        
         switch type {
         case .email(let email, let password):
             self.type = type.typeName
             self.password = password
             self.email = email
-            self.loadContent(withCredentials: true)
         case .firebase(let token), .apple(let token), .facebook(let token), .google(let token):
             self.type = type.typeName
             self.token = token
-            self.loadContent()
         }
+        
+        self.initWebView(controller: controller)
+        self.addScriptHandlers()
+        self.loadContent(with: type)
+        
     }
     
     /// Send event to RXB.
@@ -140,14 +140,16 @@ public class CereSDK: NSObject, WKNavigationDelegate {
         controller.view.addSubview(self.webView!)
     }
     
-    private func loadContent(withCredentials: Bool = false) {
+    private func loadContent(with authType: AuthType) {
         let urlWithPath: URL?
         let url = URL(string: "\(self.env.nativeHtmlUrl)?appId=\(self.appId)&integrationPartnerUserId=\(self.integrationPartnerUserId)&platform=ios&version=\(self.version)&env=\(self.env.name)")
         
-        urlWithPath = withCredentials ?
-            url.flatMap { URL(string: $0.absoluteString + "&email=\(self.email)&password=\(self.password)" )}  :
-            url.flatMap { URL(string: $0.absoluteString + "&accessToken=\(self.token)" )}
-        
+        switch authType {
+        case .email(let email, let password):
+            urlWithPath =   url.flatMap { URL(string: $0.absoluteString + "&email=\(email)&password=\(password)" )}
+        case .apple(let token), .google(let token), .firebase(let token), .facebook(let token):
+            urlWithPath =   url.flatMap { URL(string: $0.absoluteString + "&accessToken=\(token)" )}
+        }
         self.webView?.load(URLRequest(url: urlWithPath!))
     }
     
