@@ -40,7 +40,7 @@ public class CereSDK: NSObject, WKNavigationDelegate {
     
     /// SDK instance
     public static let instance = CereSDK()
-
+    
     private var appId: String = ""
     private var integrationPartnerUserId: String = ""
     private var version: String = "unknown"
@@ -54,7 +54,7 @@ public class CereSDK: NSObject, WKNavigationDelegate {
     internal var onInitializationFinishedHandler: OnInitializationFinishedHandler?
     internal var onInitializationErrorHandler: OnInitializationErrorHandler?
     internal var onEventReceivedHandler: OnEventReceivedHandler?
-        
+    
     internal var leftPercentage: CGFloat = 0
     internal var topPercentage: CGFloat = 0
     internal var widthPercentage: CGFloat = 100
@@ -76,25 +76,27 @@ public class CereSDK: NSObject, WKNavigationDelegate {
     /// - Parameter type: Auth method
     
     public func initSDK(appId: String, integrationPartnerUserId: String, controller: UIViewController, type: AuthType) {
+        
         self.sdkInitStatus = SdkStatus.INITIALIZING
         determineCurrentVersion()
-    
+        
         self.appId = appId
         self.integrationPartnerUserId = integrationPartnerUserId
+        
+        self.initWebView(controller: controller)
+        self.addScriptHandlers()
         
         switch type {
         case .email(let email, let password):
             self.type = type.typeName
             self.password = password
             self.email = email
+            self.loadContent(withCredentials: true)
         case .firebase(let token), .apple(let token), .facebook(let token), .google(let token):
             self.type = type.typeName
             self.token = token
+            self.loadContent()
         }
-        
-        self.initWebView(controller: controller)
-        self.addScriptHandlers()
-        self.loadContent()
     }
     
     /// Send event to RXB.
@@ -112,7 +114,7 @@ public class CereSDK: NSObject, WKNavigationDelegate {
         self.widthPercentage = width
         self.heightPercentage = height
     }
-
+    
     /// Hide SDK view
     public func hide() {
         self.hideWebView()
@@ -138,9 +140,15 @@ public class CereSDK: NSObject, WKNavigationDelegate {
         controller.view.addSubview(self.webView!)
     }
     
-    private func loadContent() {
-        let url = URL(string: "\(self.env.nativeHtmlUrl)?appId=\(self.appId)&integrationPartnerUserId=\(self.integrationPartnerUserId)&platform=ios&version=\(self.version)&env=\(self.env.name)&token=\(self.token)")
-        self.webView?.load(URLRequest(url: url!))
+    private func loadContent(withCredentials: Bool = false) {
+        let urlWithPath: URL?
+        let url = URL(string: "\(self.env.nativeHtmlUrl)?appId=\(self.appId)&integrationPartnerUserId=\(self.integrationPartnerUserId)&platform=ios&version=\(self.version)&env=\(self.env.name)")
+        
+        urlWithPath = withCredentials ?
+            url.flatMap { URL(string: $0.absoluteString + "&email=\(self.email)&password=\(self.password)" )}  :
+            url.flatMap { URL(string: $0.absoluteString + "&accessToken=\(self.token)" )}
+        
+        self.webView?.load(URLRequest(url: urlWithPath!))
     }
     
     private func determineCurrentVersion() {
