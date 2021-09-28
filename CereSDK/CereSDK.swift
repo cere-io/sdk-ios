@@ -18,6 +18,9 @@ public class CereSDK: NSObject, WKNavigationDelegate {
     public enum AuthType {
         case firebase(String)
         case email(String, String)
+        case facebook(String)
+        case google(String)
+        case apple (String)
         
         var typeName: String {
             switch self {
@@ -25,6 +28,12 @@ public class CereSDK: NSObject, WKNavigationDelegate {
                 return "EMAIL"
             case .firebase:
                 return "FIREBASE"
+            case .apple:
+                return "OAUTH_APPLE"
+            case .facebook:
+                return "OAUTH_FACEBOOK"
+            case .google:
+                return "OAUTH_GOOGLE"
             }
         }
     }
@@ -78,7 +87,7 @@ public class CereSDK: NSObject, WKNavigationDelegate {
             self.type = type.typeName
             self.password = password
             self.email = email
-        case .firebase(let token):
+        case .firebase(let token), .apple(let token), .facebook(let token), .google(let token):
             self.type = type.typeName
             self.token = token
         }
