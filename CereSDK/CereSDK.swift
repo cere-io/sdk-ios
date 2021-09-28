@@ -14,21 +14,47 @@ import SwiftyJSON
 /// Class that provides all the functionality of the Cere SDK.
 ///
 public class CereSDK: NSObject, WKNavigationDelegate {
+    
+    public enum AuthType {
+        case firebase(String)
+        case email(String, String)
+        case facebook(String)
+        case google(String)
+        case apple (String)
+        
+        var typeName: String {
+            switch self {
+            case .email:
+                return "EMAIL"
+            case .firebase:
+                return "FIREBASE"
+            case .apple:
+                return "OAUTH_APPLE"
+            case .facebook:
+                return "OAUTH_FACEBOOK"
+            case .google:
+                return "OAUTH_GOOGLE"
+            }
+        }
+    }
+    
     /// SDK instance
     public static let instance = CereSDK()
-
+    
     private var appId: String = ""
     private var integrationPartnerUserId: String = ""
     private var version: String = "unknown"
     private var token: String = ""
     private var env: Environment = Environment.PRODUCTION
-    
+    private var type: String = ""
+    private var password: String = ""
+    private var email: String = ""
     internal var webView: WKWebView?
     
     internal var onInitializationFinishedHandler: OnInitializationFinishedHandler?
     internal var onInitializationErrorHandler: OnInitializationErrorHandler?
     internal var onEventReceivedHandler: OnEventReceivedHandler?
-        
+    
     internal var leftPercentage: CGFloat = 0
     internal var topPercentage: CGFloat = 0
     internal var widthPercentage: CGFloat = 100
@@ -45,17 +71,32 @@ public class CereSDK: NSObject, WKNavigationDelegate {
     /// - Parameter integrationPartnerUserId: The user’s id in the system.
     /// - Parameter controller: UIViewController where SDK's WebView will be attached to
     /// - Parameter token: (Optional) User onboarding access token
-    public func initSDK(appId: String, integrationPartnerUserId: String, controller: UIViewController, token: String = "") {
+    /// - Parameter email: (Optional) User email
+    /// - Parameter password: (Optional) User password
+    /// - Parameter type: Auth method
+    
+    public func initSDK(appId: String, integrationPartnerUserId: String, controller: UIViewController, type: AuthType) {
+        
         self.sdkInitStatus = SdkStatus.INITIALIZING
         determineCurrentVersion()
         
         self.appId = appId
         self.integrationPartnerUserId = integrationPartnerUserId
-        self.token = token
+        
+        switch type {
+        case .email(let email, let password):
+            self.type = type.typeName
+            self.password = password
+            self.email = email
+        case .firebase(let token), .apple(let token), .facebook(let token), .google(let token):
+            self.type = type.typeName
+            self.token = token
+        }
         
         self.initWebView(controller: controller)
         self.addScriptHandlers()
-        self.loadContent()
+        self.loadContent(with: type)
+        
     }
     
     /// Send event to RXB.
@@ -73,7 +114,7 @@ public class CereSDK: NSObject, WKNavigationDelegate {
         self.widthPercentage = width
         self.heightPercentage = height
     }
-
+    
     /// Hide SDK view
     public func hide() {
         self.hideWebView()
@@ -99,12 +140,20 @@ public class CereSDK: NSObject, WKNavigationDelegate {
         controller.view.addSubview(self.webView!)
     }
     
-    private func loadContent() {
-        let url = URL(string: "\(self.env.nativeHtmlUrl)?appId=\(self.appId)&integrationPartnerUserId=\(self.integrationPartnerUserId)&platform=ios&version=\(self.version)&env=\(self.env.name)&token=\(self.token)")
-        self.webView?.load(URLRequest(url: url!))
+    private func loadContent(with authType: AuthType) {
+        let urlWithPath: URL?
+        let url = URL(string: "\(self.env.nativeHtmlUrl)?appId=\(self.appId)&integrationPartnerUserId=\(self.integrationPartnerUserId)&platform=ios&version=\(self.version)&env=\(self.env.name)&type\(authType.typeName)")
+        
+        switch authType {
+        case .email(let email, let password):
+            urlWithPath =   url.flatMap { URL(string: $0.absoluteString + "&email=\(email)&password=\(password)" )}
+        case .apple(let token), .google(let token), .firebase(let token), .facebook(let token):
+            urlWithPath =   url.flatMap { URL(string: $0.absoluteString + "&accessToken=\(token)" )}
+        }
+        self.webView?.load(URLRequest(url: urlWithPath!))
     }
     
     private func determineCurrentVersion() {
-        self.version = Bundle.init(for: type(of: self)).object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+        self.version = Bundle.init(for: Swift.type(of: self)).object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
     }
 }
