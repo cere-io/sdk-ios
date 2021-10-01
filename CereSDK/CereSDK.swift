@@ -142,7 +142,7 @@ public class CereSDK: NSObject, WKNavigationDelegate {
     
     private func loadContent(with authType: AuthType) {
         let urlWithPath: URL?
-        let url = URL(string: "\(self.env.nativeHtmlUrl)?appId=\(self.appId)&integrationPartnerUserId=\(self.integrationPartnerUserId)&platform=ios&version=\(self.version)&env=\(self.env.name)&type\(authType.typeName)")
+        let url = URL(string: "\(self.env.nativeHtmlUrl)?appId=\(self.appId)&integrationPartnerUserId=\(self.integrationPartnerUserId)&platform=ios&version=\(self.version)&env=\(self.env.name)&type=\(authType.typeName)")
         
         switch authType {
         case .email(let email, let password):
