@@ -45,7 +45,7 @@ public class CereSDK: NSObject, WKNavigationDelegate {
     private var integrationPartnerUserId: String = ""
     private var version: String = "unknown"
     private var token: String = ""
-    private var env: Environment = Environment.PRODUCTION
+    private var env: Environment = .production
     private var type: String = ""
     private var password: String = ""
     private var email: String = ""
@@ -75,9 +75,8 @@ public class CereSDK: NSObject, WKNavigationDelegate {
     /// - Parameter password: (Optional) User password
     /// - Parameter type: Auth method
     
-    public func initSDK(appId: String, integrationPartnerUserId: String, controller: UIViewController, type: AuthType, environment: Environment = Environment.PRODUCTION) {
-        
-        self.env = environment
+    public func initSDK(appId: String, integrationPartnerUserId: String, controller: UIViewController, type: AuthType, environment: String = "production") {
+        self.env = Environment.init(rawValue: environment) ?? .production
         self.sdkInitStatus = SdkStatus.INITIALIZING
         determineCurrentVersion()
         
@@ -143,7 +142,7 @@ public class CereSDK: NSObject, WKNavigationDelegate {
     
     private func loadContent(with authType: AuthType) {
         let urlWithPath: URL?
-        let url = URL(string: "\(self.env.nativeHtmlUrl)?appId=\(self.appId)&integrationPartnerUserId=\(self.integrationPartnerUserId)&platform=ios&version=\(self.version)&env=\(self.env.name)&type=\(authType.typeName)")
+        let url = URL(string: "\(self.env.nativeHtmlUrl)?appId=\(self.appId)&integrationPartnerUserId=\(self.integrationPartnerUserId)&platform=ios&version=\(self.version)&env=\(self.env.rawValue)&type=\(authType.typeName)")
         
         switch authType {
         case .email(let email, let password):
