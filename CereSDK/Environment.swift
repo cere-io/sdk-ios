@@ -8,18 +8,22 @@
 
 import Foundation
 
-
-internal struct Environment {
-    internal static let LOCAL: Environment = Environment("local", "http://localhost:8080");
-    internal static let DEV: Environment = Environment("dev", "TODO");
-    internal static let STAGE: Environment = Environment("stage", "TODO");
-    internal static let PRODUCTION: Environment = Environment("production", "https://sdk.dev.cere.io/common/native.html");
+internal enum Environment: String {
+    case local
+    case dev
+    case stage
+    case production
     
-    internal let name: String;
-    internal let nativeHtmlUrl: String;
-    
-    init(_ name: String, _ nativeHtmlUrl: String) {
-        self.name = name;
-        self.nativeHtmlUrl = nativeHtmlUrl;
+    var nativeHtmlUrl: String{
+        switch self {
+        case .local:
+            return "http://localhost:8080"
+        case .dev:
+            return "https://sdk.dev.cere.io/common/native.html"
+        case .stage:
+            return "https://sdk.stg.cere.io/common/native.html"
+        case .production:
+            return "https://sdk.cere.io/common/native.html"
+        }
     }
 }
