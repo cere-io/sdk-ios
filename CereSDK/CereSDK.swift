@@ -75,8 +75,9 @@ public class CereSDK: NSObject, WKNavigationDelegate {
     /// - Parameter password: (Optional) User password
     /// - Parameter type: Auth method
     
-    public func initSDK(appId: String, integrationPartnerUserId: String, controller: UIViewController, type: AuthType) {
+    public func initSDK(appId: String, integrationPartnerUserId: String, controller: UIViewController, type: AuthType, environment: Environment = Environment.PRODUCTION) {
         
+        self.env = environment
         self.sdkInitStatus = SdkStatus.INITIALIZING
         determineCurrentVersion()
         
