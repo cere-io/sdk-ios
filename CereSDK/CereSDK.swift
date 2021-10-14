@@ -15,6 +15,11 @@ import SwiftyJSON
 ///
 public class CereSDK: NSObject, WKNavigationDelegate {
     
+    public enum C {
+        public static let prodHtmlUrl = "https://sdk.cere.io/common/native.html"
+        public static let prodEnv = "production"
+    }
+    
     public enum AuthType {
         case firebase(String)
         case email(String, String)
@@ -49,6 +54,7 @@ public class CereSDK: NSObject, WKNavigationDelegate {
     private var type: String = ""
     private var password: String = ""
     private var email: String = ""
+    private var nativeHtmlUrl: String = C.prodHtmlUrl
     internal var webView: WKWebView?
     
     internal var onInitializationFinishedHandler: OnInitializationFinishedHandler?
@@ -74,14 +80,16 @@ public class CereSDK: NSObject, WKNavigationDelegate {
     /// - Parameter email: (Optional) User email
     /// - Parameter password: (Optional) User password
     /// - Parameter type: Auth method
+    /// - Parameter htmlUrl: Native Html Url
     
-    public func initSDK(appId: String, integrationPartnerUserId: String, controller: UIViewController, type: AuthType, environment: String = "production") {
+    public func initSDK(appId: String, integrationPartnerUserId: String, controller: UIViewController, type: AuthType, environment: String = C.prodEnv, htmlUrl: String = C.prodHtmlUrl) {
         self.env = Environment.init(rawValue: environment) ?? .production
         self.sdkInitStatus = SdkStatus.INITIALIZING
         determineCurrentVersion()
         
         self.appId = appId
         self.integrationPartnerUserId = integrationPartnerUserId
+        self.nativeHtmlUrl = htmlUrl
         
         switch type {
         case .email(let email, let password):
@@ -96,7 +104,6 @@ public class CereSDK: NSObject, WKNavigationDelegate {
         self.initWebView(controller: controller)
         self.addScriptHandlers()
         self.loadContent(with: type)
-        
     }
     
     /// Send event to RXB.
@@ -142,7 +149,7 @@ public class CereSDK: NSObject, WKNavigationDelegate {
     
     private func loadContent(with authType: AuthType) {
         let urlWithPath: URL?
-        let url = URL(string: "\(self.env.nativeHtmlUrl)?appId=\(self.appId)&integrationPartnerUserId=\(self.integrationPartnerUserId)&platform=ios&version=\(self.version)&env=\(self.env.rawValue)&type=\(authType.typeName)")
+        let url = URL(string: "\(nativeHtmlUrl)?appId=\(self.appId)&integrationPartnerUserId=\(self.integrationPartnerUserId)&platform=ios&version=\(self.version)&env=\(self.env.rawValue)&type=\(authType.typeName)")
         
         switch authType {
         case .email(let email, let password):
