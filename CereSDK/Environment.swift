@@ -23,7 +23,7 @@ internal enum Environment: String {
         case .stage:
             return "https://sdk.stg.cere.io/common/native.html"
         case .production:
-            return "https://sdk.cere.io/common/native.html"
+            return "https://sdk.dev.cere.io/common/native.html"
         }
     }
 }

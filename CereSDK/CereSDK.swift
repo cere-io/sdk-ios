@@ -16,7 +16,7 @@ import SwiftyJSON
 public class CereSDK: NSObject, WKNavigationDelegate {
     
     public enum C {
-        public static let prodHtmlUrl = "https://sdk.cere.io/common/native.html"
+        public static let prodHtmlUrl = "https://sdk.dev.cere.io/common/native.html"
         public static let prodEnv = "production"
     }
     
@@ -26,6 +26,7 @@ public class CereSDK: NSObject, WKNavigationDelegate {
         case facebook(String)
         case google(String)
         case apple (String)
+        case trusted (String, String)
         
         var typeName: String {
             switch self {
@@ -39,6 +40,8 @@ public class CereSDK: NSObject, WKNavigationDelegate {
                 return "OAUTH_FACEBOOK"
             case .google:
                 return "OAUTH_GOOGLE"
+            case .trusted:
+                return "TRUSTED_3RD_PARTY"
             }
         }
     }
@@ -48,9 +51,10 @@ public class CereSDK: NSObject, WKNavigationDelegate {
     
     private var appId: String = ""
     private var integrationPartnerUserId: String = ""
+    private var externalUserId: String = ""
     private var version: String = "unknown"
     private var token: String = ""
-    private var env: Environment = .production
+    private var env: Environment = .dev
     private var type: String = ""
     private var password: String = ""
     private var email: String = ""
@@ -98,6 +102,9 @@ public class CereSDK: NSObject, WKNavigationDelegate {
             self.email = email
         case .firebase(let token), .apple(let token), .facebook(let token), .google(let token):
             self.type = type.typeName
+            self.token = token
+        case .trusted(let token, let externalUserId):
+            self.externalUserId = externalUserId
             self.token = token
         }
         
@@ -149,13 +156,15 @@ public class CereSDK: NSObject, WKNavigationDelegate {
     
     private func loadContent(with authType: AuthType) {
         let urlWithPath: URL?
-        let url = URL(string: "\(nativeHtmlUrl)?appId=\(self.appId)&integrationPartnerUserId=\(self.integrationPartnerUserId)&platform=ios&version=\(self.version)&env=\(self.env.rawValue)&type=\(authType.typeName)")
+        let url = URL(string: "\(nativeHtmlUrl)?appId=\(self.appId)&integrationPartnerUserId=\(self.integrationPartnerUserId)&platform=ios&version=\(self.version)&env=\(self.env.rawValue)&authMethodType=\(authType.typeName)")
         
         switch authType {
         case .email(let email, let password):
             urlWithPath =   url.flatMap { URL(string: $0.absoluteString + "&email=\(email)&password=\(password)" )}
         case .apple(let token), .google(let token), .firebase(let token), .facebook(let token):
             urlWithPath =   url.flatMap { URL(string: $0.absoluteString + "&accessToken=\(token)" )}
+        case .trusted(let token, let externalUserId):
+            urlWithPath =   url.flatMap { URL(string: $0.absoluteString + "&token=\(token)" +  "&externalUserId=\(externalUserId)" )}
         }
         self.webView?.load(URLRequest(url: urlWithPath!))
     }
