@@ -121,6 +121,11 @@ public class CereSDK: NSObject, WKNavigationDelegate {
         self.postMessage(action: JSBridgeActions.SEND_EVENT.rawValue, data: json)
     }
     
+    /// Get Nfts for the user
+    public func hasNfts() {
+        self.postMessage(action: JSBridgeActions.HAS_NFTS.rawValue, data: JSON())
+    }
+    
     /// Sets custom size for the widget. Parameters should be specified in percentage of screen bounds.
     public func setDisplay(left: CGFloat, top: CGFloat, width: CGFloat, height: CGFloat) {
         self.leftPercentage = left
