@@ -27,4 +27,10 @@ extension CereSDK {
         self.onEventReceivedHandler = handler
         return self
     }
+    
+    /// Sets handler that is called when widget is recieved js event.
+    public func onJavascriptEventReceivedHandler(_ handler: @escaping OnEventReceivedHandler) -> CereSDK {
+        self.onJavascriptEventReceivedHandler = handler
+        return self
+    }
 }
