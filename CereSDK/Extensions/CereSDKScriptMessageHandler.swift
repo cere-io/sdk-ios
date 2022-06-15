@@ -31,9 +31,14 @@ extension CereSDK: WKScriptMessageHandler {
                 return
             }
             self.onEventReceivedHandler?(event, payload)
-//        case SdkScriptHandlers.HAS_NFTS_RECEIVED.rawValue:
-//            {"payload":{"data":true}}
-//            self.showResponsePopup?(message.body as! String)
+        case SdkScriptHandlers.HAS_NFTS_RECEIVED.rawValue:
+            guard let data = (message.body as! String).data(using: .utf8),
+                  let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                  let payloadData = try? JSONSerialization.data(withJSONObject: json["payload"] as Any, options: []),
+                  let payload = String(data: payloadData, encoding: .utf8) else {
+                return
+            }
+            self.onHasNftsEventReceivedHandler?("hasNfts", payload)
         case SdkScriptHandlers.JAVASCRIPT_EVENT_RECEIVED.rawValue:
             guard let data = (message.body as! String).data(using: .utf8),
                   let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
