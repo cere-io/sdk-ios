@@ -37,12 +37,10 @@ extension CereSDK: WKScriptMessageHandler {
         case SdkScriptHandlers.JAVASCRIPT_EVENT_RECEIVED.rawValue:
             guard let data = (message.body as! String).data(using: .utf8),
                   let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
-                  let event = json["eventName"] as? String,
-                  let payloadData = try? JSONSerialization.data(withJSONObject: json["payload"] as Any, options: []),
-                  let payload = String(data: payloadData, encoding: .utf8) else {
+                  let event = json["eventName"] as? String else {
                 return
             }
-            self.onJavascriptEventReceivedHandler?(event, payload)
+            self.onJavascriptEventReceivedHandler?(event, "")
         default:
             return
         }
