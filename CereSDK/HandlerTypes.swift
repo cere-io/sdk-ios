@@ -13,6 +13,8 @@ internal enum SdkScriptHandlers : String {
     case ENGAGEMENT_RECEIVED = "EngagementReceived"
     case SDK_INITIALIZED_ERROR = "SDKInitializedError"
     case EVENT_RECEIVED = "OnEventReceived"
+    case HAS_NFTS_RECEIVED = "OnHasNftReceived"
+    case JAVASCRIPT_EVENT_RECEIVED = "OnJavascriptEventReceived"
 }
 
 /// Type for OnInitializationFinishedHandler event handler.

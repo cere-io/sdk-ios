@@ -32,5 +32,4 @@ extension CereSDK {
     internal func hideWebView() {
         self.webView?.frame = .zero
     }
-    
 }
