@@ -179,6 +179,7 @@ public class CereSDK: NSObject, WKNavigationDelegate {
         self.version = Bundle.init(for: Swift.type(of: self)).object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
     }
 
+    @available(iOS 10.0, *)
     public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
             // Check for links.
             if navigationAction.navigationType == .linkActivated {
