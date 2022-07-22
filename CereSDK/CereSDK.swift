@@ -157,7 +157,6 @@ public class CereSDK: NSObject, WKNavigationDelegate {
     private func initWebView(controller: UIViewController) {
         self.webView = WKWebView(frame: .zero, configuration: WKWebViewConfiguration())
         self.webView?.navigationDelegate = self
-//        updateWebViewSize()
         controller.view.addSubview(self.webView!)
     }
     
@@ -179,4 +178,25 @@ public class CereSDK: NSObject, WKNavigationDelegate {
     private func determineCurrentVersion() {
         self.version = Bundle.init(for: Swift.type(of: self)).object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
     }
+
+    public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+            // Check for links.
+            if navigationAction.navigationType == .linkActivated {
+                // Make sure the URL is set.
+                guard let url = navigationAction.request.url else {
+                    decisionHandler(.allow)
+                    return
+                }
+                if url.lastPathComponent.contains("browser") {
+                    // Open the link in the external browser.
+                    UIApplication.shared.open(url)
+                    // Cancel the decisionHandler because we managed the navigationAction.
+                    decisionHandler(.cancel)
+                } else {
+                    decisionHandler(.allow)
+                }
+            } else {
+                decisionHandler(.allow)
+            }
+        }
 }
