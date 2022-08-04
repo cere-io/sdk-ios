@@ -11,8 +11,8 @@ import Foundation
 internal enum Environment: String {
     case local
     case dev
-    case stage
-    case production
+    case stg
+    case prod
     
     var nativeHtmlUrl: String{
         switch self {
@@ -20,9 +20,9 @@ internal enum Environment: String {
             return "http://localhost:8080"
         case .dev:
             return "https://sdk.dev.cere.io/common/native.html"
-        case .stage:
+        case .stg:
             return "https://sdk.stg.cere.io/common/native.html"
-        case .production:
+        case .prod:
             return "https://sdk.dev.cere.io/common/native.html"
         }
     }

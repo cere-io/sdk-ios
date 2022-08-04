@@ -89,7 +89,7 @@ public class CereSDK: NSObject, WKNavigationDelegate {
     /// - Parameter htmlUrl: Native Html Url
     
     public func initSDK(appId: String, integrationPartnerUserId: String, controller: UIViewController, type: AuthType, environment: String = C.prodEnv, htmlUrl: String = C.prodHtmlUrl) {
-        self.env = Environment.init(rawValue: environment) ?? .production
+        self.env = Environment.init(rawValue: environment) ?? .prod
         self.sdkInitStatus = SdkStatus.INITIALIZING
         determineCurrentVersion()
         
