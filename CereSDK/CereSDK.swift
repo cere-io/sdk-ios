@@ -199,6 +199,19 @@ public class CereSDK: NSObject, WKNavigationDelegate {
            return true
        }
     
+    func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+            if navigationAction.targetFrame == nil || navigationAction.targetFrame?.isMainFrame == false {
+                if let urlToLoad = navigationAction.request.url {
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(urlToLoad, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.openURL(urlToLoad)
+                    }
+                }
+            }
+            return nil
+        }
+    
     public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
             // Check for links.
 //            if navigationAction.navigationType == .linkActivated {
