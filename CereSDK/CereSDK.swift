@@ -179,9 +179,29 @@ public class CereSDK: NSObject, WKNavigationDelegate {
         self.version = Bundle.init(for: Swift.type(of: self)).object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
     }
 
+    
+    public func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
+           debugPrint("func myWebView has been called")
+           debugPrint(request.url!)
+        if navigationType == UIWebView.NavigationType.linkClicked {
+               if (request.url!.host! == "stackoverflow.com"){
+                   return true
+               } else {
+                   //UIApplication.sharedApplication().openURL(request.URL!)
+                   if #available(iOS 10.0, *) {
+                       UIApplication.shared.open(request.url!)
+                   } else {
+                       // Fallback on earlier versions
+                   }
+                   return false
+               }
+           }
+           return true
+       }
+    
     public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
             // Check for links.
-            if navigationAction.navigationType == .linkActivated {
+//            if navigationAction.navigationType == .linkActivated {
                 // Make sure the URL is set.
                 guard let url = navigationAction.request.url else {
                     decisionHandler(.allow)
@@ -199,8 +219,8 @@ public class CereSDK: NSObject, WKNavigationDelegate {
                 } else {
                     decisionHandler(.allow)
                 }
-            } else {
-                decisionHandler(.allow)
-            }
+//            } else {
+//                decisionHandler(.allow)
+//            }
         }
 }
