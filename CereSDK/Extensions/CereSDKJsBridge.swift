@@ -12,6 +12,7 @@ import SwiftyJSON
 extension CereSDK {
     internal enum JSBridgeActions : String {
         case SEND_EVENT = "sendEvent"
+        case SEND_TRUSTED_EVENT = "sendTrustedEvent"
         case HAS_NFTS = "hasNfts"
     }
     

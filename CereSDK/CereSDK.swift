@@ -123,6 +123,14 @@ public class CereSDK: NSObject, WKNavigationDelegate {
         self.postMessage(action: JSBridgeActions.SEND_EVENT.rawValue, data: json)
     }
     
+    /// Send event to RXB.
+    /// - Parameter eventType: Type of event. For example `APP_LAUNCHED`.
+    /// - Parameter payload: Optional parameter which can be passed with event.
+    public func sendTrustedEvent(eventType: String, payload: String = "") {
+        let json: JSON = JSON(["eventType": eventType, "payload": payload])
+        self.postMessage(action: JSBridgeActions.SEND_TRUSTED_EVENT.rawValue, data: json)
+    }
+
     /// Get Nfts for the user
     public func hasNfts() {
         self.postMessage(action: JSBridgeActions.HAS_NFTS.rawValue, data: JSON())
@@ -178,28 +186,16 @@ public class CereSDK: NSObject, WKNavigationDelegate {
     private func determineCurrentVersion() {
         self.version = Bundle.init(for: Swift.type(of: self)).object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
     }
-
-    func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
-            if navigationAction.targetFrame == nil || navigationAction.targetFrame?.isMainFrame == false {
-                if let urlToLoad = navigationAction.request.url {
-                    if #available(iOS 10.0, *) {
-                        UIApplication.shared.open(urlToLoad, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(urlToLoad)
-                    }
-                }
-            }
-            return nil
-        }
     
     public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
             // Check for links.
-//            if navigationAction.navigationType == .linkActivated {
+            if navigationAction.navigationType == .linkActivated {
                 // Make sure the URL is set.
                 guard let url = navigationAction.request.url else {
                     decisionHandler(.allow)
                     return
                 }
+                // Check if url contains browser in the end of url
                 if url.lastPathComponent.contains("browser") {
                     // Open the link in the external browser.
                     if #available(iOS 10.0, *) {
@@ -212,8 +208,8 @@ public class CereSDK: NSObject, WKNavigationDelegate {
                 } else {
                     decisionHandler(.allow)
                 }
-//            } else {
-//                decisionHandler(.allow)
-//            }
+            } else {
+                decisionHandler(.allow)
+            }
         }
 }
